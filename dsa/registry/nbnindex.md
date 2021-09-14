@@ -60,7 +60,7 @@ Emitted when a new Account is created with [build](nbnindex.md#Build).
 address private newMaster;
 ```
 
-Returns the address of newMaster. newMaster is set when changeMaster is called and is set to a null address when updateMaster is called. This requires the newMaster to explicitly call the contract to assume control.
+Returns the address of `newMaster`. `newMaster` is set when [`changeMaster`](nbnindex.md#changemaster) is called and is set to a null address when [`updateMaster`](nbnindex.md#updatemaster) is called. This requires the `newMaster` to explicitly call the contract to assume control.
 
 ### Master
 
@@ -131,22 +131,22 @@ Returns the number of DSA versions available.
 ### CreateClone
 
 ```text
-  function createClone(uint version) internal returns (address result)
+function createClone(uint version) internal returns (address result);
 ```
 
-Creates a clone of _version_.
+Creates a clone of `version`.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| version | `uint` | Creates a clone of version. |
+| version | `uint` | The version to clone. |
 
 ### IsClone
 
 ```text
-function isClone(uint version, address query) external view returns (bool result)
+function isClone(uint version, address query) external view returns (bool result);
 ```
 
-Checks if account at _query_ is a clone of _version_.
+Checks if account at `query` is a clone of `version`.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -158,10 +158,10 @@ Checks if account at _query_ is a clone of _version_.
 ### ChangeMaster
 
 ```text
-function changeMaster(address _newMaster) external isMaster {
+function changeMaster(address _newMaster) external isMaster;
 ```
 
-This assigns _\_newMaster_ to the _newMaster_ state variable. It does not immediately make _\_newMaster_ the master but requires it to explicility take control by itself by calling [updateMaster](nbnindex.md#updatemaster).
+This assigns `_newMaster` to the `newMaster` state variable. It does not immediately make `_newMaster` the master but requires it to explicitly take control by itself by calling [updateMaster](nbnindex.md#updatemaster).
 
 #### Parameter
 
@@ -175,7 +175,7 @@ This assigns _\_newMaster_ to the _newMaster_ state variable. It does not immedi
 function updateMaster() external
 ```
 
-This is called by newMaster to make itself the new master.
+This is called by `newMaster` to make itself the new master.
 
 ### ChangeCheck
 
@@ -189,7 +189,7 @@ Changes the check address of an account version.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| \_accountVersion | `uint` | Account module version. |
+| accountVersion | `uint` | Account module version. |
 | \_newCheck | `address` | The new check address. |
 
 ### AddNewAccount
@@ -205,7 +205,8 @@ Adds a new account module version.
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | \_newAccount | `address` | The new address of the new account module. |
-| \_newCheck | `address` | The new check address. |
+| \_connectors | `address` | Address of connectors registry. |
+| \_check | `address` | The new check address. |
 
 ### Build <a id="Build"></a>
 
@@ -217,7 +218,7 @@ function build(
 ) public returns (address _account);
 ```
 
-Creates a new DSA of version _accountVersion_ with _\_owner_  as an authority.
+Creates a new DSA of version `accountVersion` with `_owner` as an authority.
 
 #### Parameters
 
@@ -236,10 +237,10 @@ function buildWithCast(
         address[] calldata _targets,
         bytes[] calldata _datas,
         address _origin
-    ) external payable returns (address _account)
+) external payable returns (address _account)
 ```
 
-Creates a new DSA and cast spells.
+Creates a new smart account and casts spells.
 
 #### Parameters
 
@@ -248,7 +249,7 @@ Check [Build](nbnindex.md#Build) for the other parameters.
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | \_targets | `address[]` | Addresses of connectors to be called in the spell. |
-| \_datas | `bytes[]` | Data passed to corresponding connectors in  _\_targets_ array. |
+| \_datas | `bytes[]` | Data passed to corresponding connectors in `_targets` array. |
 
 ### SetBasics
 
@@ -261,7 +262,7 @@ function setBasics(
 ) external ;
 ```
 
-Sets up initial properties of the contract and can only be called once after the contract is deployed.
+Sets up initial properties of NbnIndex and can only be called once after NbnIndex is deployed.
 
 #### Parameters
 
@@ -271,6 +272,4 @@ Sets up initial properties of the contract and can only be called once after the
 | \_list | `address` | The NbnList address. |
 | \_account | `address` | The address of DSA version 1. |
 | \_connectors | `address` | The connectors registry. The registry manages the available connectors. |
-
-
 

@@ -18,7 +18,7 @@ NbnImplementations is deployed on [mainnet](https://bscscan.com/address/0x5dda94
 event LogSetDefaultImplementation(address indexed oldImplementation, address indexed newImplementation);
 ```
 
-Setting a new default implementation emits this event.
+Setting a new default implementation with [`setDefaultImplementation`](nbnimplementations.md#setdefaultimplementation) emits this event.
 
 ### LogAddImplementation
 
@@ -26,7 +26,7 @@ Setting a new default implementation emits this event.
 event LogAddImplementation(address indexed implementation, bytes4[] sigs);
 ```
 
-This event is emitted when an implementation is added.
+This event is emitted when an implementation is added with [`addImplementation`](nbnimplementations.md#addimplementation).
 
 ### LogRemoveImplementation
 
@@ -34,7 +34,7 @@ This event is emitted when an implementation is added.
 event LogRemoveImplementation(address indexed implementation, bytes4[] sigs);
 ```
 
-This event is emitted when an implementation is removed.
+This event is emitted when an implementation is removed with [`removeImplementation`](nbnimplementations.md#removeimplementation).
 
 ## Read-only methods
 
@@ -52,7 +52,7 @@ Returns the address of the default account extension.
 function getImplementationSigs(address _impl) external view returns (bytes4[] memory);
 ```
 
-Returns all the function signatures of _\_impl_.
+Returns all the function signatures of `_impl`.
 
 #### Parameter
 
@@ -66,7 +66,7 @@ Returns all the function signatures of _\_impl_.
 function getImplementation(bytes4 _sig) external view returns (address);
 ```
 
-Returns the address of an account extension that has a function with _\_sig_  as its signature or the default implementation if no account extension implements it.
+Returns the address of an account extension that has a function with `_sig` as its signature or the default implementation if no account extension implements it.
 
 #### Parameter
 
@@ -80,7 +80,7 @@ Returns the address of an account extension that has a function with _\_sig_  as
 function getSigImplementation(bytes4 _sig) external view returns (address);
 ```
 
-Returns the address of an account extension that has a function with its function signature as \_sig or the null address if no extension has it.
+Returns the address of an account extension that has a function with its function signature as `_sig` or the null address if no extension has it.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |

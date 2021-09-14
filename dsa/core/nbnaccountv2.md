@@ -4,7 +4,7 @@ This is the main DSA contract. It is a proxy contract that routes function calls
 
 ## Address
 
-Autofarm connector is deployed on [mainnet](https://bscscan.com/address/0xa3999374b7669F07312F37AEd7E6328bFBE7Dd5c).
+NbnAccountV2 is deployed on [mainnet](https://bscscan.com/address/0xa3999374b7669F07312F37AEd7E6328bFBE7Dd5c).
 
 ## Code
 
@@ -32,7 +32,7 @@ It returns the address of the implementations contract.
 function _delegate(address implementation) internal
 ```
 
-It delegates a function call to the implementation \(account extension\). It uses assembly for the delegation and returns data to the external caller.
+It delegates a function call to the implementation \(account extension\). It uses assembly for the delegation and returns data with assembly too.
 
 #### Parameter
 
@@ -46,7 +46,7 @@ It delegates a function call to the implementation \(account extension\). It use
   function _fallback(bytes4 _sig) internal
 ```
 
-Retrieves the address of the extension which implements the function with function signature, \_sig from the implementations contract.
+Retrieves the address of the extension which implements the function with function signature, `_sig` from the implementations contract.
 
 #### Parameter
 
@@ -60,7 +60,7 @@ Retrieves the address of the extension which implements the function with functi
 fallback () external payable
 ```
 
-Fallback function that passes the function signature, `msg.sig` to [\_fallback](nbnaccountv2.md#_Fallback) to delegate the call.
+Fallback function that passes the function signature, `msg.sig` to [`_fallback`](nbnaccountv2.md#_Fallback) to delegate the call.
 
 ### Receive
 
@@ -68,5 +68,5 @@ Fallback function that passes the function signature, `msg.sig` to [\_fallback](
 receive () external payable
 ```
 
-Fallback function that calls [Fallback](nbnaccountv2.md#Fallback) if a function is called on the DSA.
+Fallback function that passes the function signature, `msg.sig` if there is any to [`_fallback`](nbnaccountv2.md#_Fallback) to delegate the call.
 

@@ -4,7 +4,7 @@ How to add a new connector
 
 You can create a new pull request \(PR\) to add a new connector. Your PR has to meet some requirements to get merged. We explain them here.
 
-### New connector should follow the current directory structure
+## A new connector should follow the current directory structure
 
 Files common to all connectors are in the `contracts/common` directory.
 
@@ -40,5 +40,5 @@ Few things to consider while writing the connector:
 * Use `getUint()` \(declared in `Stores`\) for getting value that saved from previous spell
 * Use `setUint()` \(declared in `Stores`\) for setting value to save for the future spell
 
-### Support
+## Support
 

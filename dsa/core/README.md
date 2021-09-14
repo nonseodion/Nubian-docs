@@ -6,5 +6,3 @@ The core contracts enable the smart account to perform its two core functions, e
 
 {% page-ref page="nbnimplementations.md" %}
 
-
-

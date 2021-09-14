@@ -32,7 +32,7 @@ Gives a DSA its initial configuration.
 function addAuth(address _owner) external;
 ```
 
-Adds _\_owner_ as an authority over the DSA that calls it. _\_owner_ must not already be an authority.
+Adds `_owner` as an authority over the DSA that calls it. `_owner` must not already be an authority.
 
 #### Parameter
 
@@ -46,7 +46,7 @@ Adds _\_owner_ as an authority over the DSA that calls it. _\_owner_ must not al
 function removeAuth(address _owner) external;
 ```
 
-Removes _\_owner_ as an authority over the DSA that calls it. _\_owner_ must already be an authority.
+Removes `_owner` as an authority over the DSA that calls it. `_owner` must already be an authority.
 
 #### Parameter
 

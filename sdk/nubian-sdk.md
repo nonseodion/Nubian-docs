@@ -54,7 +54,7 @@ const dsa = new DSA({
 
 ## Setting up DSA Accounts
 
-Every user needs to create a Smart Account to interact with DeFi Protocols seamlessly; this allows developers to build extensible use-cases with maximum security and composability. You can also create multiple account for a single address.
+Every user needs to create a Smart Account to interact with DeFi Protocols seamlessly; this allows developers to build extensible use-cases with maximum security and composability. You can also create multiple accounts for a single address.
 
 To get started using the SDK, you must do one or all of the following:
 
@@ -91,10 +91,10 @@ dsa.build({
 | **Parameter** | **Type** | **Description** | **Default** |
 | :--- | :--- | :--- | :--- |
 | gasPrice | `string/number` | The gas price in gwei. Mostly used in Node implementation to configure the transaction confirmation speed. | Not optional in Node and estimated in other modes. |
-| origin | `address` | The address to track the origin of transaction. Used for analytics and affiliates. | `0x0` |
-| authority | `address` | The DSA authority. The address to be added as authority. An authority has control over the DSA created. | Address of the connected wallet, private key address or public key in Browser, Node and Simulation modes respectively. |
-| from | `address` | The account with which you want to create your DSA. This is helpful to create DSA for other addresses. | Same as authority. |
-| nonce | `string/number` | Nonce of your sender account. Mostly used in Node implementation to send transaction with a particular nonce either to override unconfirmed transaction or some other purpose. | Used only in Node. |
+| origin | `address` | The address to track the origin of the transaction. Used for analytics and affiliates. | `0x0` |
+| authority | `address` | The DSA authority. This is the address to be added as an authority. An authority has control over the DSA created. | Address of the connected wallet, private key address or public key in Browser, Node and Simulation modes respectively. |
+| from | `address` | The account with which you want to create your DSA. This is helpful to create DSA for other addresses. | Same as the authority parameter. |
+| nonce | `string/number` | Nonce of your sender account. Mostly used in Node implementation to send a transaction with a particular nonce either to override unconfirmed transaction or some other purpose. | Used only in Node. |
 | version | `string/number` | The DSA version to create. | 2 |
 
 #### Returns
@@ -121,7 +121,7 @@ dsa.getAccounts(address).then(console.log)
 
 #### Returns
 
-The method returns a promise that resolves to an array of objects with all the DSA accounts where `address` is authorised. Here's how it looks:
+The method returns a Promise that resolves to an array of objects with all the DSA accounts where `address` is authorised. Here's how it looks:
 
 ```javascript
 [
@@ -163,7 +163,7 @@ This method returns a promise that resolves to the newly set instance. Here's ho
 
 ## Casting Spells
 
-**Spells** denotes a sequence of connector functions that will achieve a given use case. Spells can comprise of any number of functions across any number of connectors.
+**Spells** denotes a sequence of connector functions that will achieve a given use case. Spells can comprise any number of functions across any number of connectors.
 
 With this SDK, performing DeFi operations on your dapp consists of creating a `spells` instance to add transactions. Here is where you can initiate complex transactions amongst different protocols.
 
@@ -245,7 +245,7 @@ let transactionReceipt = await spells.cast({value: "1000000000000000000"})
 spells.cast().then(console.log) // returns transaction receipt
 ```
 
-You can pass an object to send **optional** parameters like sending ETH along with the transaction like we did above to deposit in the DSA.
+You can pass an object to send **optional** parameters like sending ETH along with the transaction as we did above to deposit in the DSA.
 
 ```javascript
 spells.cast({
@@ -269,9 +269,9 @@ This will send the transaction to blockchain in node implementation \(or ask use
 
 | **Name** | **Address** |
 | :--- | :--- |
-| [**BASIC-A**](/protocol/Connectors/available-connectors/basic) | 0xC2e1c0fc0A2c0126AD5222D6eB2453c6aEc1e637 |
-| [**PancakeV2**](/protocol/Connectors/available-connectors/pancakeswap) | 0x546bde105B24147bbd34F3147a0FD68961515Feb |
-| [**VenusV2**](/protocol/Connectors/available-connectors/Venus) | 0xB03308Fa6A1Ecb489ECC86B7e930491020ee2b96 |
-| [**AutofarmV2**](/protocol/Connectors/available-connectors/autofarm) | 0x82aB4bCD90E99f31a90201669AACC6867c9c3B77 |
-| [**Nubian Staking**](/protocol/Connectors/available-connectors/nubian-staking) | 0x0764C090a14E45Ae23F69732BeB28504f89D669A |
+| [**BASIC-A**](../connectors/available-connectors/basic.md) | 0xC2e1c0fc0A2c0126AD5222D6eB2453c6aEc1e637 |
+| [**PancakeV2**](../connectors/available-connectors/pancakeswap.md) | 0x546bde105B24147bbd34F3147a0FD68961515Feb |
+| [**VenusV2**](../connectors/available-connectors/venus.md) | 0xB03308Fa6A1Ecb489ECC86B7e930491020ee2b96 |
+| [**AutofarmV2**](../connectors/available-connectors/autofarm.md) | 0x82aB4bCD90E99f31a90201669AACC6867c9c3B77 |
+| [**Nubian Staking**](../connectors/available-connectors/nubian-staking.md) | 0x0764C090a14E45Ae23F69732BeB28504f89D669A |
 

@@ -1,10 +1,14 @@
 # NbnImplementationM1
 
-Adds the [connectors](../../connectors/connector) functionality to the DSA. This extension is used to interact with connectors. Connectors allow DSAs to interact with DeFi protocols. All function calls to connectors are called spells and this extension routes the spell to the right connector. These spells can be combined together to perform complex to simple behaviours in a single transaction. To integrate with a new DeFi protocol simply requires a connector for that protocol to be added. We encourage developers to build connectors or request for the addition of new connectors. Check [how to add a connector](../../connectors/how-to-add-a-connector.md) for more information.
+Adds the [connectors](https://github.com/Open-Currency-Collective/Nubian-docs/tree/ce454b1dab9faab31bdc41a121de78a6bb87987e/connectors/connector/README.md) functionality to the DSA. This extension is used to interact with connectors. Connectors allow DSAs to interact with various DeFi protocols. All function calls to connectors are called spells and this extension routes the spell to the right connector. These spells can be combined together to perform complex to simple behaviours in a single transaction. To integrate with a new DeFi protocol simply requires a connector for that protocol to be added. We encourage developers to build connectors or request the addition of new connectors. Check [how to add a connector](../../connectors/how-to-add-a-connector.md) for more information.
 
 ## Address
 
-Autofarm connector is deployed on [mainnet](https://bscscan.com/address/0xd29aFdfBCad1C249b0c69Eb2785b08353029282B).
+NbnImplementationM1 connector is deployed on [mainnet](https://bscscan.com/address/0xd29aFdfBCad1C249b0c69Eb2785b08353029282B).
+
+## Code
+
+[implementation\_m1.sol](https://github.com/Open-Currency-Collective/nubian-dsa-contracts/blob/master/contracts/v2/accounts/Implementation_m1.sol)
 
 ## Events
 
@@ -22,15 +26,11 @@ event LogCast(
 );
 ```
 
-Emitted when spells are cast i.e when [cast](nbnimplementationm1.md#Cast) is called. It combines all the events from each connector and emits them once. This saves gas cost and allows for a single point of reference.
-
-## Code
-
-[implementation\_m1.sol](https://github.com/Open-Currency-Collective/nubian-dsa-contracts/blob/master/contracts/v2/accounts/Implementation_m1.sol)
+Emitted when spells are cast i.e when [`cast`](nbnimplementationm1.md#Cast) is called. It combines all the events from each connector and emits them once. This saves gas cost and allows for a single point of reference for all events emitted in connectors called during the spell.
 
 ## Read-only methods
 
-### nbnIndex
+### NbnIndex
 
 ```text
 address internal immutable nbnIndex;
@@ -44,7 +44,7 @@ Returns the address of NbnIndex. NbnIndex can cast a spell during smart account 
 address public immutable connectorsM1;
 ```
 
-Returns the address of the connectors contract, this contract has a record of all the connectors and is used to add and remove connectors.
+Returns the address of the [connectors registry](../../connectors/connectors-registry.md), it is used to check the validity of connectors to be used in casting spells.
 
 ### DecodeEvent
 
@@ -54,15 +54,11 @@ function decodeEvent(bytes memory response) internal pure returns (string memory
 
 Used to retrieve an event's name and parameters from an abi encoded response. Spells return their events in an abi encoded format.
 
-|  |
-| :--- |
-
-
 #### Parameter
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| response | `bytes` | Abi encoded return value from a spell.  |
+| response | `bytes` | Abi encoded return value from a spell. |
 
 ## State-changing methods
 
@@ -72,14 +68,14 @@ Used to retrieve an event's name and parameters from an abi encoded response. Sp
 function spell(address _target, bytes memory _data) internal returns (bytes memory response);
 ```
 
-Used to cast an individual spell by delegating to _\_target_ and passing the parameters. It does this using assembly code.
+Used to cast an individual spell by delegating to `_target` and passing the parameters encoded in `_data`. It does this using assembly code.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| target | `address` | The address of the connector to be called. |
-| \_data | `bytes` | Abi encoded parameters to be passed to target. |
+| \_target | `address` | The address of the connector to be called. |
+| \_data | `bytes` | Abi encoded parameters to be passed to `_target`. |
 
 ### Cast <a id="Cast"></a>
 
@@ -94,13 +90,13 @@ payable
 returns (bytes32)
 ```
 
-It casts all the spells it receives using [spell](nbnimplementationm1.md#Spell) and logs their events once using [LogCast](nbnimplementationm1.md#LogCast).
+It casts all the spells it receives using [`spell`](nbnimplementationm1.md#Spell) and logs their events once using [`LogCast`](nbnimplementationm1.md#LogCast).
 
 #### Parameters
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | \_targetNames | `string[]` | Names of all connectors to be used in casting the spells. |
-| \_datas | `bytes[]` | Abi encoded parameters to be passed to the corresponding \_targetNames connector. |
-| \_origin | `address` | The address to track the origin of transaction. Used for analytics and affiliates. |
+| \_datas | `bytes[]` | Abi encoded parameters to be passed to the corresponding `_targetNames` connector. |
+| \_origin | `address` | The address to track the origin of the transaction. Used for analytics and affiliates. |
 
