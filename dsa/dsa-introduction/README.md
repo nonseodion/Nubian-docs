@@ -3,7 +3,7 @@ sidebar_position: 1
 label: Introduction
 ---
 
-# DSA Introduction
+# DeFi Smart Account \(DSA\)
 
 A Decentralized Finance \(DeFi\) Smart Account \(DSA\) is a smart contract account that enables users to interact with the DeFi ecosystem with ease. The Nubian Finance Ecosystem is built for developers and users to leverage the full potential of the ecosystem using smart accounts. The upgradability and extensibility of smart accounts allow them to support new protocols. It makes use of account extensions to give the smart accounts additional features and capabilities. These extensions are added to improve the smart account's core functionalities like adding and removing owners, perform complex DeFi operations, interact with DeFi protocols or do almost anything.
 
@@ -17,5 +17,5 @@ The main contract of the DSA is a proxy contract that uses a fallback to receive
 
 From the above execution, the smart account consists of a proxy, implementations contract and various account extensions listed in the implementations contract.
 
-[Connectors](../connectors/connectors-explained.md) are a core part of the Nubian ecosystem an account extension allows the smart account to interact with them.
+[Connectors](../connectors/) are a core part of the Nubian ecosystem an account extension allows the smart account to interact with them.
 

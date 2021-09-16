@@ -3,7 +3,7 @@ sidebar_position: 1
 label: Connectors Explained
 ---
 
-# Connectors Explained
+# Connectors
 
 Connectors are standard proxy logic contracts that let DeFi Smart Accounts \(DSAs\) interact with various smart contracts and make necessary actions like cross-protocol interoperability accessible.
 

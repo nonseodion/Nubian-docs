@@ -23,5 +23,5 @@ The core contracts enable the smart account to perform its two core functions, e
 The account extensions add more features to the smart accounts. The Nubian finance team has added two extensions:
 
 * [**NbnDefaultImplementation**](implementations/nbndefaultimplementation.md): Adds and removes owners called authorities from the account.
-* [**NbnImplementationM1**](implementations/nbnimplementationm1.md): This allows the smart account to cast spells which are functions that interact with DeFi protocols using [connectors](../connectors/connectors-explained.md).
+* [**NbnImplementationM1**](implementations/nbnimplementationm1.md): This allows the smart account to cast spells which are functions that interact with DeFi protocols using [connectors](../connectors/).
 

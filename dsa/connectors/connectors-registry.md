@@ -54,7 +54,7 @@ Emitted when a chief is enabled or disabled \(toggled\) with [`toggleChief`](con
 address public immutable nbnIndex;
 ```
 
-Returns the address of [NbnIndex](../dsa/registry/nbnindex.md).
+Returns the address of [NbnIndex](../dsa-introduction/registry/nbnindex.md).
 
 ### Chief
 
