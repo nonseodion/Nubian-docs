@@ -1,3 +1,7 @@
+---
+description: Here's all you need to get started using Nubian.
+---
+
 # Nubian Introduction
 
 Nubian simplifies Decentralized Finance \(DeFi\) for the average crypto user. All the basic DeFi activities including swapping, lending, borrowing, liquidity provision, staking and yield farming are made easily accessible on a simple user interface. 
@@ -32,7 +36,7 @@ Earn interest in swap fees by providing liquidity to any of the trading pairs on
 
 ### 🚜 Yield Farm
 
-Yield farming allows you to earn even more interest after [providing liquidity](./#liquidity-provision) to a trading pair on any AMM. When you provide liquidity, you are given liquidity provider \(LP\) tokens to track the amount of liquidity you provided. These LP tokens can be used to earn more rewards by staking them on a farm. You are given an interest in another token. The interest can also be compounded.
+Yield farming allows you to earn even more interest after [providing liquidity](./#liquidity-provision) to a trading pair on any AMM. When you provide liquidity, you are given liquidity provider \(LP\) tokens to track the amount of liquidity you provided. These LP tokens can be used to earn more rewards by staking them in a farm \(a pool for staking LP tokens to earn rewards\). You are given an interest in another token. The interest can also be compounded.
 
 
 
