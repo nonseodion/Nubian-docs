@@ -16,7 +16,7 @@ The smart accounts themselves are proxy contracts, they make use of other contra
 
 ### Connectors
 
-For the smart account to interact with DeFi protocols it uses an extension that in turn interacts with separate contracts called connectors. [NbnImplementationsM1](dsa-introduction/implementations/nbndefaultimplementation.md) extends the smart accounts to support the use of connectors. Each call to a protocol done using NbnImplementationsM1 is called a **spell** and multiple spells can be combined to be **cast** in a single transaction. This allows for very simple actions and even complex actions can be done using different DeFi protocols. These connectors are built for each DeFi protocol and implement specific functions needed to interact with a DeFi protocol. So connecting smart accounts to a new DeFi protocol simply just involves adding a new connector for that protocol.
+For the smart account to interact with DeFi protocols it uses an extension that in turn interacts with separate contracts called connectors. [NbnImplementationsM1](dsa-introduction/implementations/nbndefaultimplementation.md) is the extension that extends the smart accounts to support the use of connectors. Each call to a protocol done using NbnImplementationsM1 is called a **spell** and multiple spells can be combined to be **cast** in a single transaction. This allows for very simple actions and even complex actions can be done using different DeFi protocols. These connectors are built for each DeFi protocol and implement specific functions needed to interact with a DeFi protocol. So connecting smart accounts to a new DeFi protocol simply just involves adding a new connector for that protocol.
 
 ### The flow of a simple swap on Pancakeswap 
 
