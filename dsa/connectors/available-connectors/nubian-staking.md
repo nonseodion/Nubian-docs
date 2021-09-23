@@ -18,7 +18,7 @@ Nubian staking Connector is deployed on [mainnet.](https://bscscan.com/address/0
 event LogDeposit( uint256 recordId, uint256 amt, uint256 getId, uint256 setId);
 ```
 
-Emitted each time a deposit occurs with [Deposit](nubian-staking.md#deposit).
+Emitted each time a deposit occurs with [deposit](nubian-staking.md#deposit).
 
 ### LogWithdraw
 
@@ -26,7 +26,7 @@ Emitted each time a deposit occurs with [Deposit](nubian-staking.md#deposit).
 event LogWithdraw( address indexed user, uint256 recordId, uint256 amt, uint256 reward, uint256 getId, uint256 setId);
 ```
 
-Emitted each time a withdrawal occurs with Withdraw.
+Emitted each time a withdrawal occurs with [withdraw](nubian-staking.md#withdraw).
 
 ## Read-only method
 
@@ -58,21 +58,21 @@ Stakes Nubian tokens for a certain period to earn nubian rewards. It logs the re
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | amt | `uint256` | Amount of Nubian tokens to stake. |
-| lockPeriod | `uint256` | Length of time in seconds the user wants to stake his Nubian tokens must be more than the minLockPeriod. Valid lockPeriods are retrievable from the nubian staking contract. |
+| lockPeriod | `uint256` | Length of time in seconds the user wants to stake his Nubian tokens must be more than the `minLockPeriod`. Valid lockPeriods and minLockPeriod are retrievable from the nubian staking contract. |
 | getId | `uint256` | ID to get `amt`. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to set amount staked. Pass 0 if unsure of its value. |
 
 ### Withdraw
 
 ```text
-    function withdraw(
-        uint256 recordId,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function withdraw(
+    uint256 recordId,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Withdraws all the Nubian tokens staked with a recordId and gives the user earned rewards. RecordIds are logged with each stake.
+Withdraws all the Nubian tokens staked with a `recordId` and gives the user earned rewards. RecordIds are logged with each stake.
 
 **Withdraw Parameters**
 

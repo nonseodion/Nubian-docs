@@ -1,6 +1,6 @@
 # Venus
 
-Provides functions to deposit, withdraw, borrow, and pay tokens and liquidate borrow positions. It provides raw functions that require the caller to provide a vToken and an underlying token address and normal functions that resolves the addresses from a provided tokenId. See the tokenIds with their corresponding tokens and vTokens in the TokenId [table](venus.md#TokenIds).
+Provides functions to deposit, withdraw, borrow, payback and liquidate borrow positions. It provides raw functions that require the caller to provide a vToken and an underlying token address and normal functions that resolves the addresses from a provided tokenId. See the tokenIds with their corresponding tokens and vTokens in the TokenId [table](venus.md#TokenIds).
 
 ## Address
 
@@ -18,7 +18,7 @@ Venus Connector is deployed on [mainnet](https://bscscan.com/address/0x4ffcfd0f6
 event LogDeposit( address indexed token, address vToken, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a deposit occurs with [Deposit](venus.md#Deposit) or [DepositRaw](venus.md#DepositRaw).
+Emitted each time a deposit occurs with [Deposit](venus.md#Deposit) or [DepositRaw](venus.md#DepositRaw).
 
 ### LogWithdraw
 
@@ -26,7 +26,7 @@ Emitted with other spell events each time a deposit occurs with [Deposit](venus.
 event LogWithdraw( address indexed token, address vToken, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a withdrawal occurs with [Withdraw](venus.md#WithdrawRaw) or [WithdrawRaw](venus.md#WithdrawRaw)
+Emitted each time a withdrawal occurs with [Withdraw](venus.md#WithdrawRaw) or [WithdrawRaw](venus.md#WithdrawRaw)
 
 ### LogBorrow
 
@@ -34,7 +34,7 @@ Emitted with other spell events each time a withdrawal occurs with [Withdraw](ve
 event LogBorrow( address indexed token, address vToken, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a borrow occurs with [Borrow](venus.md#Borrow) or [BorrowRaw](venus.md#BorrowRaw)
+Emitted each time a borrow occurs with [Borrow](venus.md#Borrow) or [BorrowRaw](venus.md#BorrowRaw)
 
 ### LogPayback
 
@@ -42,7 +42,7 @@ Emitted with other spell events each time a borrow occurs with [Borrow](venus.md
 event LogPayback( address indexed token, address vToken, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a payback occurs with [Payback](venus.md#Payback) or [PaybackRaw](venus.md#PaybackRaw)
+Emitted each time a payback occurs with [Payback](venus.md#Payback) or [PaybackRaw](venus.md#PaybackRaw)
 
 ### LogDepositVToken
 
@@ -50,7 +50,7 @@ Emitted with other spell events each time a payback occurs with [Payback](venus.
 event LogDepositVToken( address indexed token, address vToken, uint256 tokenAmt, uint256 vTokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a deposit occurs with [DepositVToken](venus.md#DepositVToken) or [DepositVTokenRaw](venus.md#DepositVTokenRaw).
+Emitted each time a deposit occurs with [DepositVToken](venus.md#DepositVToken) or [DepositVTokenRaw](venus.md#DepositVTokenRaw).
 
 ### LogWithdrawVToken
 
@@ -58,7 +58,7 @@ Emitted with other spell events each time a deposit occurs with [DepositVToken](
 event LogWithdrawVToken( address indexed token, address vToken, uint256 tokenAmt, uint256 vTokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a withdrawal occurs with [WithdrawVToken](venus.md#WithdrawVToken) or [WithdrawVTokenRaw](venus.md#WithdrawVToken).
+Emitted each time a withdrawal occurs with [WithdrawVToken](venus.md#WithdrawVToken) or [WithdrawVTokenRaw](venus.md#WithdrawVToken).
 
 ### LogLiquidate
 
@@ -66,7 +66,7 @@ Emitted with other spell events each time a withdrawal occurs with [WithdrawVTok
 event LogLiquidate( address indexed borrower, address indexed tokenToPay, address indexed tokenInReturn, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted with other spell events each time a liquidation occurs with [Liquidate](venus.md#Liquidate) or [LiquidateRaw](venus.md#LiquidateRaw).
+Emitted each time a liquidation occurs with [Liquidate](venus.md#Liquidate) or [LiquidateRaw](venus.md#LiquidateRaw).
 
 ## Read-only Method
 
@@ -83,13 +83,13 @@ Returns "Venus-v1" as the name of this function.
 ### DepositRaw
 
 ```text
-    function depositRaw(
-        address token,
-        address vToken,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function depositRaw(
+    address token,
+    address vToken,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Deposit token into Venus to earn interest. Depositor gets vTokens.
@@ -99,7 +99,7 @@ Deposit token into Venus to earn interest. Depositor gets vTokens.
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | token | `address` | Address of token to deposit. Pass 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to deposit BNB. |
-| vToken | `address` | Address of token's corressponding vToken. |
+| vToken | `address` | Address of token's corresponding vToken. |
 | amt | `uint256` | Amount of tokens or BNB to be deposited. Pass `uint(-1)` to deposit the full DSA balance. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount deposited. Pass 0 if unsure of its value. |
@@ -107,12 +107,12 @@ Deposit token into Venus to earn interest. Depositor gets vTokens.
 #### Deposit <a id="Deposit"></a>
 
 ```text
-    function deposit(
-        string calldata tokenId,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function deposit(
+    string calldata tokenId,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Deposit token to Venus to earn interest. Depositor gets vTokens.
@@ -129,13 +129,13 @@ Deposit token to Venus to earn interest. Depositor gets vTokens.
 ### WithdrawRaw
 
 ```text
-    function withdrawRaw(
-        address token,
-        address vToken,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function withdrawRaw(
+    address token,
+    address vToken,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Withdraw tokens from Venus with interest earned. The account making the withdrawal must have the equivalent vTokens for amt in its balance.
@@ -145,7 +145,7 @@ Withdraw tokens from Venus with interest earned. The account making the withdraw
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | token | `address` | Address of token to withdraw. Pass 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to deposit BNB. |
-| vToken | `address` | Address of token's corressponding vToken. |
+| vToken | `address` | Address of token's corresponding vToken. |
 | amt | `uint256` | Amount of underlying tokens to be withdrawn. Pass `uint(-1)` to withdraw the full DSA token or BNB balance. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount withdrawn. Pass 0 if unsure of its value. |
@@ -153,12 +153,12 @@ Withdraw tokens from Venus with interest earned. The account making the withdraw
 ### Withdraw
 
 ```text
-    function withdraw(
-        string calldata tokenId,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function withdraw(
+    string calldata tokenId,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Withdraw tokens from Venus with interest earned. The account making the withdrawal must have the equivalent vTokens for amt in its balance.
@@ -167,7 +167,7 @@ Withdraw tokens from Venus with interest earned. The account making the withdraw
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| tokenId | `string` | The token id of the token to withdraw. \(For eg: BUSD-A\) which is a representation of venus mapping. |
+| tokenId | `string` | The token id of the token to withdraw. \(E.g.: BUSD-A\) which is a representation of venus mapping. |
 | amt | `uint256` | Amount of underlying tokens to be withdrawn. Pass `uint(-1)` to withdraw the full DSA token or BNB balance. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount withdrawn. Pass 0 if unsure of its value. |
@@ -175,16 +175,14 @@ Withdraw tokens from Venus with interest earned. The account making the withdraw
 #### BorrowRaw <a id="BorrowRaw"></a>
 
 ```text
-    function borrowRaw(
-        address token,
-        address vToken,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function borrowRaw(
+    address token,
+    address vToken,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
-
-### 
 
 Borrow token from Venus. The amount borrowed must be less than the user's Account Liquidity and the market's available liquidity.
 
@@ -193,7 +191,7 @@ Borrow token from Venus. The amount borrowed must be less than the user's Accoun
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | token | `address` | Address of token to borrow. Pass 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to borrow BNB. |
-| vToken | `address` | Address of token's corressponding vToken. |
+| vToken | `address` | Address of  `token`'s corressponding vToken. |
 | amt | `uint256` | Amount of underlying tokens to be borrowed. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount borrowed. Pass 0 if unsure of its value. |
@@ -201,12 +199,12 @@ Borrow token from Venus. The amount borrowed must be less than the user's Accoun
 ### Borrow
 
 ```text
-    function borrow(
-        string calldata tokenId,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function borrow(
+    string calldata tokenId,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Borrow token from Venus. The amount borrowed must be less than the user's Account Liquidity and the market's available liquidity.
@@ -223,13 +221,13 @@ Borrow token from Venus. The amount borrowed must be less than the user's Accoun
 ### PaybackRaw
 
 ```text
-    function paybackRaw(
-        address token,
-        address vToken,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function paybackRaw(
+    address token,
+    address vToken,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Payback tokens borrowed from Venus.
@@ -239,7 +237,7 @@ Payback tokens borrowed from Venus.
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | token | `address` | Address of token to payback. Pass 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to payback BNB. |
-| vToken | `address` | Address of token's corressponding vToken. |
+| vToken | `address` | Address of token's corresponding vToken. |
 | amt | `uint256` | Amount of underlying tokens to be borrowed. Pass `uint(-1)` to payback total amount borrowed with interest. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount payed back. Pass 0 if unsure of its value. |
@@ -247,12 +245,12 @@ Payback tokens borrowed from Venus.
 ### Payback
 
 ```text
-    function payback(
-        string calldata tokenId,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function payback(
+    string calldata tokenId,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Payback tokens borrowed from Venus.
@@ -261,7 +259,7 @@ Payback tokens borrowed from Venus.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| tokenId | `string` | The token id of the token to payback. \(For eg: BUSD-A\) which is a representation of venus mapping. |
+| tokenId | `string` | The token id of the token to payback. \(E.g.: BUSD-A\) which is a representation of venus mapping. |
 | amt | `uint256` | Amount of underlying tokens to be borrowed. Pass `uint(-1)` to payback total amount borrowed with interest. |
 | getId | `uint256` | ID to get amt. Pass 0 if unsure of its value. |
 | setId | `uint256` | ID to store the amount payed back. Pass 0 if unsure of its value. |
@@ -269,20 +267,20 @@ Payback tokens borrowed from Venus.
 ### DepositVTokenRaw
 
 ```text
-    function depositVTokenRaw(
-        address token,
-        address vToken,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function depositVTokenRaw(
+    address token,
+    address vToken,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Same as the [DepositRaw]() function except setId stores the number of vTokens received.
+Same as the [DepositRaw](venus.md) function except setId stores the number of vTokens received.
 
 **DepositVTokenRaw Parameters**
 
-Check [DepositRaw]() function for the other parameters.
+Check [DepositRaw](venus.md) function for the other parameters.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -291,19 +289,19 @@ Check [DepositRaw]() function for the other parameters.
 #### DepositVToken <a id="DepositVToken"></a>
 
 ```text
-    function depositVToken(
-        string calldata tokenId,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function depositVToken(
+    string calldata tokenId,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Same as the [Deposit]() function except setId stores the number of vTokens received.
+Same as the [Deposit](venus.md) function except setId stores the number of vTokens received.
 
 **DepositVToken Parameters**
 
-Check [Deposit]() function for the other parameters.
+Check [Deposit](venus.md) function for the other parameters.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -312,23 +310,23 @@ Check [Deposit]() function for the other parameters.
 ### WithdrawVTokenRaw
 
 ```text
-    function withdrawVTokenRaw(
-        address token,
-        address vToken,
-        uint256 vTokenAmt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function withdrawVTokenRaw(
+    address token,
+    address vToken,
+    uint256 vTokenAmt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Same as the [WithdrawRaw]() function except for the following:
+Same as the [WithdrawRaw](venus.md) function except for the following:
 
 * GetId is used to retrieve vTokenAmt instead of amt.
 * The amount of vTokens to redeem is passed instead of the amount of underlying tokens to withdraw.
 
 **WithdrawVTokenRaw Parameters**
 
-Check the [WithdrawRaw]() function for other parameters.
+Check the [WithdrawRaw](venus.md) function for other parameters.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -338,22 +336,22 @@ Check the [WithdrawRaw]() function for other parameters.
 #### WithdrawVToken <a id="WithdrawVToken"></a>
 
 ```text
-    function withdrawVToken(
-        string calldata tokenId,
-        uint256 vTokenAmt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function withdrawVToken(
+    string calldata tokenId,
+    uint256 vTokenAmt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Same as the [Withdraw]() function except for the following:
+Same as the [Withdraw](venus.md) function except for the following:
 
 * GetId is used to retrieve vTokenAmt instead of amt.
 * The amount of vTokens to redeem is passed instead of the amount of underlying tokens to withdraw.
 
 **WithdrawVToken Parameters**
 
-Check the [Withdraw]() function for other parameters.
+Check the [Withdraw](venus.md) function for other parameters.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
@@ -363,16 +361,16 @@ Check the [Withdraw]() function for other parameters.
 ### LiquidateRaw
 
 ```text
-    function liquidateRaw(
-        address borrower,
-        address tokenToPay,
-        address vTokenPay,
-        address tokenInReturn,
-        address vTokenColl,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function liquidateRaw(
+    address borrower,
+    address tokenToPay,
+    address vTokenPay,
+    address tokenInReturn,
+    address vTokenColl,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Liquidate an accounts borrow position on Venus. The account's liquidity must be negative.
@@ -393,14 +391,14 @@ Liquidate an accounts borrow position on Venus. The account's liquidity must be 
 ### Liquidate
 
 ```text
-    function liquidateRaw(
-        address borrower,
-        string calldata tokenIdToPay,
-        string calldata tokenIdInReturn,
-        uint256 amt,
-        uint256 getId,
-        uint256 setId
-    ) public payable returns (string memory _eventName, bytes memory _eventParam);
+function liquidateRaw(
+    address borrower,
+    string calldata tokenIdToPay,
+    string calldata tokenIdInReturn,
+    uint256 amt,
+    uint256 getId,
+    uint256 setId
+) public payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Liquidate an accounts borrow position on Venus. The account's liquidity must be negative.

@@ -6,5 +6,3 @@ The account extensions add more features to the smart accounts. The Nubian finan
 
 {% page-ref page="nbnimplementationm1.md" %}
 
-
-

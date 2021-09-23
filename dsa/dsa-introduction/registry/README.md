@@ -6,5 +6,3 @@ These contracts deploy the smart accounts, manage and record smart account contr
 
 {% page-ref page="nbnlist.md" %}
 
-
-

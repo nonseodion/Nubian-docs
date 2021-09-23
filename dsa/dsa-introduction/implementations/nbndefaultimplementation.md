@@ -18,7 +18,7 @@ NbnDefaultImplementation is deployed on [mainnet](https://bscscan.com/address/0x
 event LogEnableUser(address indexed user);
 ```
 
-Emitted when a new authority is added to a DSA.
+Emitted when a new authority is added to a DSA with [`enable`](nbndefaultimplementation.md#enable)
 
 ### LogDisableUser
 
@@ -26,7 +26,7 @@ Emitted when a new authority is added to a DSA.
 event LogDisableUser(address indexed user);
 ```
 
-Emitted when an authority is removed.
+Emitted when an authority is removed with [`disable`](nbndefaultimplementation.md#disable).
 
 ## Read-only methods
 
@@ -60,7 +60,7 @@ Returns the version of the DSA contract.
 function isAuth(address user) public view returns (bool);
 ```
 
-Used to check if user has control over a DSA. It returns a boolean value, true if it is an authority false if otherwise.
+Used to check if `user` has control over a DSA. It returns a boolean value, true if it is an authority false if otherwise.
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Used to check if user has control over a DSA. It returns a boolean value, true i
 function enable(address user) public;
 ```
 
-Adds an address as a new authority. _user_ must not already be an authority else the transaction reverts. This gives _user_ complete control over a DSA.
+Adds an address as a new authority. `user` must not already be an authority else the transaction reverts. This gives `user` complete control over a DSA.
 
 #### Parameters
 
@@ -90,7 +90,7 @@ Adds an address as a new authority. _user_ must not already be an authority else
 function disable(address user) public;
 ```
 
-Removes an address from the authorities of a smart account. The address must already be an authority, or else the transaction is reverted. This removes all rights over a smart account from _user_.
+Removes an address from the authorities of a smart account. The address must already be an authority, or else the transaction is reverted. This removes all rights over a smart account from `user`.
 
 #### Parameters
 

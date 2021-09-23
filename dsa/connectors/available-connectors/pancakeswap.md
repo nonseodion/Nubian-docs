@@ -61,7 +61,7 @@ function deposit(
 ) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
-Adds liquidity to the tokenA/tokenB pool on Pancakeswap. Here are a few things to note:
+Adds liquidity to the `tokenA-tokenB` pool on Pancakeswap. Here are a few things to note:
 
 * amtA/amtB should be added in a ratio equal to the price when the transacation is executed. This adds exactly amtA and amtB to the pool.
 * It creates a new pool if no pool exists and adds exactly amtA and amtB to the pool.
@@ -88,7 +88,7 @@ function withdraw(
 ) external payable returns (string memory _eventName, bytes memory _eventParam)
 ```
 
-Removes liquidity from the tokenA/tokenB pool on Pancakeswap. Reverts if no tokenA/tokenB pool exists.
+Removes liquidity from the `tokenA-tokenB` pool on Pancakeswap. Reverts if no tokenA/tokenB pool exists.
 
 **Withdraw Parameters**
 
@@ -102,14 +102,14 @@ Removes liquidity from the tokenA/tokenB pool on Pancakeswap. Reverts if no toke
 ### Sell
 
 ```text
-    function sell(
-        address buyAddr,
-        address sellAddr,
-        uint256 sellAmt,
-        uint256 unitAmt,
-        uint256 getId,
-        uint256 setId
-    ) external payable returns (string memory _eventName, bytes memory _eventParam);
+function sell(
+    address buyAddr,
+    address sellAddr,
+    uint256 sellAmt,
+    uint256 unitAmt,
+    uint256 getId,
+    uint256 setId
+) external payable returns (string memory _eventName, bytes memory _eventParam);
 ```
 
 Used to swap, buy and sell tokens on Pancakeswap.

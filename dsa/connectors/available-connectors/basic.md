@@ -18,7 +18,7 @@ Basic Connector is deployed on [mainnet](https://bscscan.com/address/0xC2e1c0fc0
 event LogDeposit(address indexed erc20, uint256 tokenAmt, uint256 getId, uint256 setId);
 ```
 
-Emitted when there is a deposit with [Deposit](basic.md#Deposit).
+Emitted when there is a deposit with [deposit](basic.md#Deposit).
 
 ### LogWithdraw
 
@@ -26,7 +26,7 @@ Emitted when there is a deposit with [Deposit](basic.md#Deposit).
 event LogWithdraw(address indexed erc20, uint256 tokenAmt, address indexed to, uint256 getId uint256 setId);
 ```
 
-Emitted when there is a withdrawal with [Withdraw](basic.md#Withdraw).
+Emitted when there is a withdrawal with [withdraw](basic.md#Withdraw).
 
 ## Methods
 

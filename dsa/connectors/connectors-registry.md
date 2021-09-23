@@ -1,6 +1,6 @@
 # Connectors Registry
 
-This contract keeps a record of available connectors, it can also add, removs and update them.
+This contract keeps a record of available connectors, it can also add, remove and update them.
 
 ## Address
 
@@ -18,7 +18,9 @@ Connectors Registry is deployed on [mainnet](https://bscscan.com/address/0x94493
 event LogConnectorAdded(string indexed connectorName, address indexed connector);
 ```
 
-Emitted anytime a new connector is added.
+Emitted anytime a new connector is added with [`addConnector`](connectors-registry.md#addconnectors).
+
+
 
 ### LogConnectorUpdated
 
@@ -26,7 +28,7 @@ Emitted anytime a new connector is added.
 event LogConnectorUpdated(string indexed connectorName, address indexed oldConnector, address indexed newConnector);
 ```
 
-Emitted anytime an existing connector is updated.
+Emitted anytime an existing connector is updated with [`updateConnector`](connectors-registry.md#updateconnectors).
 
 ### LogConnectorRemoved
 
@@ -34,7 +36,7 @@ Emitted anytime an existing connector is updated.
 event LogConnectorRemoved(string indexed connectorName, address indexed connector);
 ```
 
-Emitted when an existing connector is removed.
+Emitted when an existing connector is removed with [`removeConnector`](connectors-registry.md#removeconnectors).
 
 ### LogController
 
@@ -42,7 +44,7 @@ Emitted when an existing connector is removed.
 event LogController(address indexed addr, bool indexed isChief);
 ```
 
-Emitted when a chief is enabled or disabled \(toggled\).
+Emitted when a chief is enabled or disabled \(toggled\) with [`toggleChief`](connectors-registry.md#togglechief).
 
 ## Read-only Methods
 
@@ -52,7 +54,7 @@ Emitted when a chief is enabled or disabled \(toggled\).
 address public immutable nbnIndex;
 ```
 
-Returns the address of NbnIndex.
+Returns the address of [NbnIndex](../dsa-introduction/registry/nbnindex.md).
 
 ### Chief
 
@@ -105,7 +107,7 @@ Adds new connectors.
 function removeConnectors(string[] calldata _connectorNames) external isChief
 ```
 
-Removes an already existing connector.
+Removes already existing connectors.
 
 **Parameter**
 
@@ -119,7 +121,7 @@ Removes an already existing connector.
 function updateConnectors(string[] calldata _connectorNames, address[] calldata _connectors) external isChief
 ```
 
-Updates already existing _\_connectorNames_ with new addresses.
+Updates already existing `_connectorNames` with new addresses.
 
 **Parameter**
 
@@ -134,7 +136,7 @@ Updates already existing _\_connectorNames_ with new addresses.
 function isConnectors(string[] calldata _connectorNames) external view returns (bool isOk, address[] memory _connectors)
 ```
 
-Checks if _\_connectorNames_ are connectors and returns their connector addresses.
+Checks if `_connectorNames` are connectors and returns their connector addresses.
 
 **Parameter**
 
