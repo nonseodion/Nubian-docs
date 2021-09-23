@@ -4,7 +4,7 @@ description: >-
   ecosystem.
 ---
 
-# Nubian Code Overview
+# Nubian Codebase Overview
 
 The Nubian Codebase is hosted on Github we've got four main repositories that hold most of our code.
 

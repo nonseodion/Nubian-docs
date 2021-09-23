@@ -10,9 +10,7 @@ Nubian makes interactions with DeFi no different from interacting with a simple 
 
 To make all these and more possible you have to create a smart contract account called a **DeFi Smart Account \(DSA\)**. The smart account is used to manage all your investments it's like a bank account but far better because you have absolute control of it. It protects your crypto assets and at the same time gives you limitless access to the DeFi ecosystem.
 
-
-
-## Features
+## Products
 
 ### 🔄Swap
 

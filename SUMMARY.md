@@ -5,7 +5,8 @@
 ## DEVELOPERS <a id="dsa"></a>
 
 * [How Nubian Works](dsa/how-nubian-works.md)
-* [Nubian Code Overview](dsa/nubian-code-overview.md)
+* [Nubian Codebase Overview](dsa/nubian-code-overview.md)
+* [Contributing](dsa/contributing.md)
 * [DeFi Smart Account \(DSA\)](dsa/dsa-introduction/README.md)
   * [DSA Contracts](dsa/dsa-introduction/dsa-contracts.md)
   * [Core](dsa/dsa-introduction/core/README.md)
@@ -30,4 +31,9 @@
   * [Installation](dsa/sdk/installation.md)
   * [Setup Account](dsa/sdk/setup-account.md)
   * [Cast](dsa/sdk/cast.md)
+
+## Contributors
+
+* [Developers](contributors/developers.md)
+* [Writers](contributors/writers.md)
 

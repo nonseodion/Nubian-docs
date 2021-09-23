@@ -16,7 +16,7 @@ The smart accounts themselves are proxy contracts, they make use of other contra
 
 ### Connectors
 
-For the smart account to interact with DeFi protocols it uses an extension that in turn interacts with separate contracts called connectors. [NbnImplementationsM1](dsa-introduction/implementations/nbndefaultimplementation.md) is the extension that extends the smart accounts to support the use of connectors. Each call to a protocol done using NbnImplementationsM1 is called a **spell** and multiple spells can be combined to be **cast** in a single transaction. This allows for very simple actions and even complex actions can be done using different DeFi protocols. These connectors are built for each DeFi protocol and implement specific functions needed to interact with a DeFi protocol. So connecting smart accounts to a new DeFi protocol simply just involves adding a new connector for that protocol.
+For the smart account to interact with DeFi protocols it uses an extension that in turn interacts with separate contracts called connectors. Connectors are smart contracts that allow smart accounts to interact with various DeFi protocols. [NbnImplementationsM1](dsa-introduction/implementations/nbndefaultimplementation.md) is the extension that extends the smart accounts to support the use of connectors. Each call to a protocol done using NbnImplementationsM1 is called a **spell** and multiple spells can be combined to be **cast** \(execute a spell\) in a single transaction. This allows for very simple actions and even complex actions can be done using different DeFi protocols. These connectors are built for each DeFi protocol and implement specific functions needed to interact with a DeFi protocol. So connecting smart accounts to a new DeFi protocol simply just involves adding a new connector for that protocol.
 
 ### The flow of a simple swap on Pancakeswap 
 
@@ -29,11 +29,11 @@ Every call to a DeFi protocol follows the same process below.
 3. The user enters the amount of the token he wants to swap and other necessary parameters and calls `cast` on the smart account.
 4. The smart account finds the extension that implements `cast`  \([NbnImplementationsM1](dsa-introduction/implementations/nbnimplementationm1.md)\) and passes the data to it.
 5. NbnImplementationsM1 finds the Pancakeswap connector and casts the swap spell using the connector.
-6. The connector interacts with its DeFi protocol and completes the swap spell.
+6. The Pancakceswap connector interacts with Pancakeswap and completes the swap spell.
 
 
 
- We offer an **SDK** that handles all the blockchain connections and leaves you to just cast spells from your browser or node backend. It helps you concentrate on just the user interface and to deliver a nice user experience to your users.
+We offer an **SDK** that handles all the blockchain connections and leaves you to just cast spells from your browser or node backend. It helps you concentrate on just the user interface and to deliver a nice user experience to your users.
 
 
 
